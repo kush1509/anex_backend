@@ -14,6 +14,8 @@ router.post('/addTransaction', function(req, res) {
 	var modeOfPayment = req.body.modeOfPayment;
 	var uniqueId = req.body.uniqueId;
 
+	//console.log(date);
+
 	Transaction.create({
 		typeOfTransaction: typeOfTransaction,
 		date: date,
@@ -21,7 +23,6 @@ router.post('/addTransaction', function(req, res) {
 		nameOfParty: nameOfParty,
 		summary: summary,
 		modeOfPayment:modeOfPayment,
-
 	}).then(function(transaction){
 		User.find({
 			where:{
@@ -35,6 +36,7 @@ router.post('/addTransaction', function(req, res) {
 		res.send("Transaction not added");
 		console.log(e);
 	})
+	
 });
 
 
