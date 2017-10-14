@@ -4,7 +4,7 @@ var User =  require('../models').User;
 
 /* GET users listing. */
 router.post('/create', function(req, res, next) {
-	var uniqueIDUser  = req.body.id;
+	var uniqueIDUser  = req.body.uniqueId;
 	var nameUser = req.body.name;
 
 	User.create({
