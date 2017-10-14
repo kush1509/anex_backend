@@ -44,7 +44,7 @@ sequelize
   })
 
 User.hasMany(Transaction, {as:'transaction'})
-//sequelize.sync();
+sequelize.sync();
 
 module.exports.User = User;
 module.exports.Transaction = Transaction;
