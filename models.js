@@ -1,9 +1,12 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER, process.env.DATABASE_PASSSWORD, {
-  host: 'postgres://baqocsywkpgcnv:d7fe251f3c65d20a61447b130a507303e4fca21c6e0a57b2144a54cc2faf5e43@ec2-23-23-248-162.compute-1.amazonaws.com:5432/d75gto87630l2t',
+const sequelize = new Sequelize('d75gto87630l2t', 'baqocsywkpgcnv', 'd7fe251f3c65d20a61447b130a507303e4fca21c6e0a57b2144a54cc2faf5e43', {
+  host: 'ec2-23-23-248-162.compute-1.amazonaws.com',
   port: '5432',
-  dialect: 'postgres'
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
 });
 
 
