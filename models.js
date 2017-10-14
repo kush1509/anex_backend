@@ -1,15 +1,7 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('anex', 'alfred', 'Alfred343$', {
-  host: 'localhost',
-  port: '3306',
-  dialect: 'mysql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
+const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER, process.env.DATABASE_PASSSWORD, {
+  dialect: 'postgres'
 });
 
 
