@@ -71,10 +71,16 @@ router.get('/getTransactionsByMonth/:uniqueId/:month',function(req, res) {
 			uniqueId : uniqueId
 		}
 	}).then( user => {
-		user.getTransaction({
-			where: sequelize.where(sequelize.fn('MONTH',sequelize.col('date')),month)
-		}).then(function(transactions){
-			res.send(transactions);
+		user.getTransaction()
+		.then(function(transactions){
+			var arr = [];
+			transactions.forEach(function(t){
+				//console.log(t.date.getMonth());
+				if(t.date.getMonth()+1 == month)
+					arr.push(t);
+			})
+
+			res.send(arr);
 		}).catch(function(e){
 			res.send("Failed");
 			console.log(e);

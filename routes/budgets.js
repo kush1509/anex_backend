@@ -98,22 +98,23 @@ router.get('/showBudgetSpent/:uniqueId/:month', function(req, res){
 			uniqueId : uniqueId
 		}
 	}).then( user => {
-		user.getTransaction({
-			where: sequelize.where(sequelize.fn('MONTH',sequelize.col('date')),month)
-		}).then(function(transactions){
+		user.getTransaction()
+		.then(function(transactions){
 			transactions.forEach(function(t){
-			spent+=t.amount;
-		})
+				if(t.date.getMonth()+1 == month)
+					spent+=t.amount;
+
+			})
 		res.json({
 			spent:spent
-		});
+		});	
+		})
+		
 		}).catch(function(e){
 			res.send("Failed");
 			console.log(e);
 		})
 	});	
-
-})
 
 
 router.get('/showBudgetLeft/:uniqueId/:month', function(req, res){
@@ -130,11 +131,11 @@ router.get('/showBudgetLeft/:uniqueId/:month', function(req, res){
 			uniqueId : uniqueId
 		}
 	}).then( user => {
-		user.getTransaction({
-			where: sequelize.where(sequelize.fn('MONTH',sequelize.col('date')),month)
-		}).then(function(transactions){
+		user.getTransaction()
+		.then(function(transactions){
 			transactions.forEach(function(t){
-				spent+=t.amount;
+				if(t.date.getMonth()+1 == month)
+					spent+=t.amount;
 			})
 
 		Budget.findOne({

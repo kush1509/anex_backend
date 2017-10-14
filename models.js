@@ -9,6 +9,21 @@ const sequelize = new Sequelize('d75gto87630l2t', 'baqocsywkpgcnv', 'd7fe251f3c6
   }
 });
 
+/* Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('anex', 'root', process.env.DATABASE_PASSWORD, {
+  host: 'localhost',
+  port: '3306',
+  dialect: 'mysql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+});
+*/
+
 sequelize
   .authenticate()
   .then(() => {
