@@ -13,6 +13,8 @@ router.post('/addTransaction', function(req, res) {
 	var modeOfPayment = req.body.modeOfPayment;
 	var uniqueId = req.body.uniqueId;
 
+	console.log(date);
+
 	Transaction.create({
 		typeOfTransaction: typeOfTransaction,
 		date: date,
