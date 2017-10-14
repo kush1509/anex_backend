@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var sequelize = require('sequelize');
 var Transaction = require('../models').Transaction;
 var User = require('../models').User;
 
@@ -56,25 +57,29 @@ router.get('/getTransactions/:uniqueId',function(req, res) {
 });
 
 
-/*router.get('/getTransactions/:userID/:month',function(req, res) {
+router.get('/getTransactionsByMonth/:uniqueId/:month',function(req, res) {
 
-	var userID = req.params.userID;
+	const Op = sequelize.Op;
+	var uniqueId = req.params.uniqueId;
 	var month = req.params.month;
-	console.log(userID);
+	//console.log(userID);
 
-	Transaction.findAll({
-		where: {
-			userUniqueId: userID,
-			sequelize.where(sequelize.fn('MONTH', sequelize.col('date')), month),
+	User.find({
+		where : {
+			uniqueId : uniqueId
 		}
-	}).then(function(transactions){
-		res.send(transactions);
-	}).catch(function(e){
-		res.send("Failed");
-		console.log(e);
-	})
+	}).then( user => {
+		user.getTransaction({
+			where: sequelize.where(sequelize.fn('MONTH',sequelize.col('date')),month)
+		}).then(function(transactions){
+			res.send(transactions);
+		}).catch(function(e){
+			res.send("Failed");
+			console.log(e);
+		})
+	});
 
 });
-*/
+
 
 module.exports = router;

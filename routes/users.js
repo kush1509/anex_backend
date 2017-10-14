@@ -2,14 +2,16 @@ var express = require('express');
 var router = express.Router();
 var User =  require('../models').User;
 
+
 /* GET users listing. */
 router.post('/create', function(req, res, next) {
-	var uniqueIDUser  = req.body.uniqueId;
-	var nameUser = req.body.name;
+
+	var uniqueId  = req.body.uniqueId;
+	var name = req.body.name;
 
 	User.create({
-		uniqueIdkey: "value",  uniqueId: uniqueIDUser,
-		name: nameUser,
+		uniqueIdkey: "value",  uniqueId: uniqueId,
+		name: name,
 	}).then(function(){
 		res.send("User created");
 	}).catch(function(e){
@@ -18,5 +20,6 @@ router.post('/create', function(req, res, next) {
 	})
 
 });
+
 
 module.exports = router;

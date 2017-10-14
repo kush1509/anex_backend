@@ -9,7 +9,6 @@ const sequelize = new Sequelize('d75gto87630l2t', 'baqocsywkpgcnv', 'd7fe251f3c6
   }
 });
 
-
 sequelize
   .authenticate()
   .then(() => {
@@ -43,8 +42,20 @@ sequelize
 
   })
 
+  const Budget = sequelize.define('budget', {
+    uniqueId: { type:Sequelize.STRING, allowNull: false},
+
+    month: {type:Sequelize.INTEGER, allowNull:false},
+
+    amount:{ type: Sequelize.DOUBLE, allowNull:false, defaultValue:0},
+
+  })
+
+
 User.hasMany(Transaction, {as:'transaction'})
+
 sequelize.sync();
 
 module.exports.User = User;
 module.exports.Transaction = Transaction;
+module.exports.Budget = Budget;

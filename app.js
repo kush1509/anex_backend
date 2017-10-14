@@ -6,10 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sequelize = require('sequelize');
 
+var passport = require('passport');
+var Strategy = require('passport-facebook').Strategy;
 
-var index = require('./routes/index');
+
 var users = require('./routes/users');
 var transactions = require('./routes/transactions');
+var budgets = require('./routes/budgets');
 //var models =require('./models');
 
 
@@ -27,10 +30,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/users', users);
 app.use('/transactions', transactions);
+app.use('/budgets',budgets);
 //app.use('models',models);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
