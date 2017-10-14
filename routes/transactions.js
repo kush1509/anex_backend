@@ -13,8 +13,8 @@ router.post('/addTransaction', function(req, res) {
 	var modeOfPayment = req.body.modeOfPayment;
 	var uniqueId = req.body.uniqueId;
 
-	res.send(req.body);
-	/*
+	//res.send(req.body);
+	
 
 	Transaction.create({
 		typeOfTransaction: typeOfTransaction,
@@ -37,7 +37,7 @@ router.post('/addTransaction', function(req, res) {
 		res.send("Transaction not added");
 		console.log(e);
 	})
-	*/
+	
 });
 
 
