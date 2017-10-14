@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('anex', 'root', process.env.DATABASE_PASSWORD, {
+const sequelize = new Sequelize('anex', 'alfred', 'Alfred343$', {
   host: 'localhost',
   port: '3306',
   dialect: 'mysql',
@@ -47,7 +47,7 @@ sequelize
   })
 
 User.hasMany(Transaction, {as:'transaction'})
- //sequelize.sync();
+//sequelize.sync();
 
 module.exports.User = User;
 module.exports.Transaction = Transaction;
