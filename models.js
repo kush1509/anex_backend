@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+/*const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('d75gto87630l2t', 'baqocsywkpgcnv', 'd7fe251f3c65d20a61447b130a507303e4fca21c6e0a57b2144a54cc2faf5e43', {
   host: 'ec2-23-23-248-162.compute-1.amazonaws.com',
@@ -8,8 +8,9 @@ const sequelize = new Sequelize('d75gto87630l2t', 'baqocsywkpgcnv', 'd7fe251f3c6
     ssl: true
   }
 });
+*/
 
-/* Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('anex', 'root', process.env.DATABASE_PASSWORD, {
   host: 'localhost',
@@ -22,7 +23,7 @@ const sequelize = new Sequelize('anex', 'root', process.env.DATABASE_PASSWORD, {
     idle: 10000
   },
 });
-*/
+
 
 sequelize
   .authenticate()

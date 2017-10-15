@@ -80,7 +80,10 @@ router.get('/getTransactionsByMonth/:uniqueId/:month',function(req, res) {
 					arr.push(t);
 			})
 
-			res.send(arr);
+
+			res.send(arr.sort(function(a,b){
+				return new Date(a.date)- new Date(b.date);
+			}));
 		}).catch(function(e){
 			res.send("Failed");
 			console.log(e);
